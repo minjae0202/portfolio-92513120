@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --subtle: #f2f1ef;
+  --line: #e4e2df;
+  --muted: #6b6560;
+  --accent: #4f46e5;
+  --accent-strong: #4338ca;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f0f10;
+    --foreground: #ececec;
+    --card: #17171a;
+    --subtle: #222226;
+    --line: #2c2c31;
+    --muted: #9b9ba3;
+    --accent: #818cf8;
+    --accent-strong: #a5b4fc;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-card: var(--card);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --font-sans: var(--font-noto-sans-kr), system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.field {
+  @apply w-full rounded-lg border border-line bg-card px-3 py-2 text-sm outline-none focus:border-accent;
+}
+
+.label {
+  @apply mb-1 block text-sm font-medium;
 }
