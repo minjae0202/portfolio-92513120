@@ -2,6 +2,18 @@ import { connectDB } from "@/lib/mongodb";
 import { ProjectModel } from "@/models/Project";
 import { seedProjects } from "@/lib/seed-data";
 
+export const PROJECT_CATEGORIES = {
+  course: "강의 실습",
+  whitehat: "화이트햇 스쿨",
+  personal: "개인",
+} as const;
+
+export type ProjectCategory = keyof typeof PROJECT_CATEGORIES;
+
+export function isProjectCategory(value: unknown): value is ProjectCategory {
+  return typeof value === "string" && value in PROJECT_CATEGORIES;
+}
+
 export type Project = {
   id: string;
   title: string;
@@ -12,7 +24,7 @@ export type Project = {
   highlights: string[];
   repoUrl: string;
   deployUrl: string;
-  isCourseProject: boolean;
+  category: ProjectCategory;
   featured: boolean;
   order: number;
   views: number;
@@ -21,8 +33,10 @@ export type Project = {
 
 export type ProjectInput = Omit<Project, "id" | "views" | "createdAt">;
 
-type ProjectDocLike = Omit<Project, "id" | "createdAt"> & {
+type ProjectDocLike = Omit<Project, "id" | "createdAt" | "category"> & {
   _id: unknown;
+  category?: string;
+  isCourseProject?: boolean; // category 도입 전 문서 호환
   createdAt?: Date;
 };
 
@@ -37,7 +51,11 @@ function toProject(doc: ProjectDocLike): Project {
     highlights: doc.highlights ?? [],
     repoUrl: doc.repoUrl ?? "",
     deployUrl: doc.deployUrl ?? "",
-    isCourseProject: Boolean(doc.isCourseProject),
+    category: isProjectCategory(doc.category)
+      ? doc.category
+      : doc.isCourseProject
+        ? "course"
+        : "personal",
     featured: Boolean(doc.featured),
     order: doc.order ?? 0,
     views: doc.views ?? 0,
@@ -80,7 +98,7 @@ export async function viewProject(id: string): Promise<Project | undefined> {
     const doc = await ProjectModel.findByIdAndUpdate(
       id,
       { $inc: { views: 1 } },
-      { new: true }
+      { returnDocument: "after" }
     ).lean();
     return doc ? toProject(doc as unknown as ProjectDocLike) : undefined;
   } catch {

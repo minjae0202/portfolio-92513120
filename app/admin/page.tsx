@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/authz";
-import { getProjects } from "@/lib/projects";
+import { getProjects, PROJECT_CATEGORIES } from "@/lib/projects";
 import { deleteProjectAction } from "@/lib/actions";
 import { SubmitButton } from "@/components/SubmitButton";
 
@@ -42,7 +42,9 @@ export default async function AdminPage() {
                   <Link href={`/projects/${p.id}`} className="font-medium hover:text-accent">
                     {p.title}
                   </Link>
-                  {p.isCourseProject && <span className="ml-2 text-xs text-accent">강의</span>}
+                  {p.category !== "personal" && (
+                    <span className="ml-2 text-xs text-accent">{PROJECT_CATEGORIES[p.category]}</span>
+                  )}
                 </td>
                 <td className="px-4 py-3 text-xs text-muted">
                   {p.repoUrl ? "저장소 ✓" : "저장소 —"} / {p.deployUrl ? "배포 ✓" : "배포 —"}

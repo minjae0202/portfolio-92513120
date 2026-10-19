@@ -15,7 +15,7 @@ export async function GET() {
         techStack: p.techStack,
         repoUrl: p.repoUrl,
         deployUrl: p.deployUrl,
-        isCourseProject: p.isCourseProject,
+        category: p.category,
       })),
     });
   } catch (err) {

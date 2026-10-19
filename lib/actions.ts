@@ -6,7 +6,13 @@ import { AuthError } from "next-auth";
 import { auth, signIn, signOut } from "@/auth";
 import { createUser } from "@/lib/users";
 import { createEntry, deleteEntry } from "@/lib/guestbook";
-import { createProject, deleteProject, updateProject, type ProjectInput } from "@/lib/projects";
+import {
+  createProject,
+  deleteProject,
+  isProjectCategory,
+  updateProject,
+  type ProjectInput,
+} from "@/lib/projects";
 import { updateProfile, type Profile } from "@/lib/profile";
 import { isAdmin, requireAdmin } from "@/lib/authz";
 
@@ -94,6 +100,7 @@ function parseProject(formData: FormData): ProjectInput {
   const title = text(formData, "title", 100);
   const summary = text(formData, "summary", 200);
   if (!title || !summary) throw new Error("제목과 한 줄 소개는 필수입니다.");
+  const category = formData.get("category");
 
   return {
     title,
@@ -104,7 +111,7 @@ function parseProject(formData: FormData): ProjectInput {
     highlights: lines(text(formData, "highlights", 3000)),
     repoUrl: safeUrl(text(formData, "repoUrl", 300)),
     deployUrl: safeUrl(text(formData, "deployUrl", 300)),
-    isCourseProject: formData.get("isCourseProject") === "on",
+    category: isProjectCategory(category) ? category : "personal",
     featured: formData.get("featured") === "on",
     order: Number(formData.get("order")) || 0,
   };

@@ -6,8 +6,8 @@ import { ProjectLinks } from "@/components/ProjectLinks";
 
 export default async function HomePage() {
   const [profile, projects] = await Promise.all([getProfile(), getProjects()]);
-  const courseProjects = projects.filter((p) => p.isCourseProject);
-  const featured = projects.filter((p) => p.featured && !p.isCourseProject).slice(0, 4);
+  const courseProjects = projects.filter((p) => p.category === "course");
+  const featured = projects.filter((p) => p.featured && p.category !== "course").slice(0, 4);
 
   return (
     <div className="flex flex-col gap-16">

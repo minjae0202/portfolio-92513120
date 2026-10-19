@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { viewProject } from "@/lib/projects";
 import { ProjectLinks } from "@/components/ProjectLinks";
+import { CategoryBadge } from "@/components/CategoryBadge";
 
 export default async function ProjectDetailPage({ params }: PageProps<"/projects/[id]">) {
   const { id } = await params; // Next.js 16: params는 Promise
@@ -16,9 +17,7 @@ export default async function ProjectDetailPage({ params }: PageProps<"/projects
 
       <header className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
-          {project.isCourseProject && (
-            <span className="rounded-full bg-accent/10 px-2 py-0.5 font-medium text-accent">강의 실습</span>
-          )}
+          <CategoryBadge category={project.category} />
           {project.period && <span>{project.period}</span>}
           <span>· 조회 {project.views}</span>
         </div>

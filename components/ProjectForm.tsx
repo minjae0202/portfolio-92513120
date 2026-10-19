@@ -1,4 +1,4 @@
-import type { Project } from "@/lib/projects";
+import { PROJECT_CATEGORIES, type Project } from "@/lib/projects";
 import { SubmitButton } from "@/components/SubmitButton";
 
 type Props = {
@@ -53,10 +53,16 @@ export function ProjectForm({ action, project, submitLabel }: Props) {
         <label htmlFor="highlights" className="label">주요 내용 (한 줄에 하나)</label>
         <textarea id="highlights" name="highlights" rows={5} defaultValue={project?.highlights.join("\n")} className="field" />
       </div>
-      <div className="flex flex-wrap gap-6 text-sm">
+      <div className="flex flex-wrap items-center gap-6 text-sm">
         <label className="flex items-center gap-2">
-          <input type="checkbox" name="isCourseProject" defaultChecked={project?.isCourseProject} />
-          강의 실습 프로젝트
+          분류
+          <select name="category" defaultValue={project?.category ?? "personal"} className="field w-auto">
+            {Object.entries(PROJECT_CATEGORIES).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
         </label>
         <label className="flex items-center gap-2">
           <input type="checkbox" name="featured" defaultChecked={project?.featured ?? true} />

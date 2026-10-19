@@ -10,7 +10,7 @@ const projectSchema = new Schema(
     highlights: { type: [String], default: [] },
     repoUrl: { type: String, default: "", trim: true },
     deployUrl: { type: String, default: "", trim: true },
-    isCourseProject: { type: Boolean, default: false },
+    category: { type: String, enum: ["course", "whitehat", "personal"], default: "personal" },
     featured: { type: Boolean, default: false },
     order: { type: Number, default: 0 },
     views: { type: Number, default: 0 },

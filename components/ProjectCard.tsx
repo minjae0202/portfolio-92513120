@@ -1,14 +1,13 @@
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import { ProjectLinks } from "@/components/ProjectLinks";
+import { CategoryBadge } from "@/components/CategoryBadge";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="flex flex-col gap-4 rounded-2xl border border-line bg-card p-5 transition hover:border-accent/50">
       <div className="flex items-center gap-2 text-xs text-muted">
-        {project.isCourseProject && (
-          <span className="rounded-full bg-accent/10 px-2 py-0.5 font-medium text-accent">강의 실습</span>
-        )}
+        <CategoryBadge category={project.category} />
         {project.period && <span>{project.period}</span>}
         <span className="ml-auto">조회 {project.views}</span>
       </div>
