@@ -68,6 +68,7 @@ export const seedProfile = {
     WHITEHAT_SKILLS,
   ],
   timeline: [
+    { period: "2026.03 ~ 2026.06", title: "웹프로그래밍 수강", detail: "프론트엔드 개발" },
     WHITEHAT_TIMELINE,
     { period: "2026.09 ~", title: "웹서버보안프로그래밍 수강", detail: "Next.js + MongoDB 풀스택 실습, 주차별 과제 제출" },
     { period: "2026.10", title: "개인 포트폴리오 홈페이지 제작", detail: "Next.js + MongoDB + Auth.js, Vercel 배포" },
