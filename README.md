@@ -4,7 +4,8 @@
 
 - 강의 실습 프로젝트 저장소: https://github.com/minjae0202/wss-2026-2
 - 강의 실습 프로젝트 배포: https://wss-2026-2.vercel.app/
-- 이 포트폴리오 배포: `https://<배포 후 입력>.vercel.app`
+- 이 포트폴리오 저장소: https://github.com/minjae0202/portfolio-92513120
+- 이 포트폴리오 배포: https://portfolio-92513120.vercel.app
 
 ## 기능
 
