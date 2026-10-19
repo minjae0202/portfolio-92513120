@@ -13,11 +13,11 @@ export default async function HomePage() {
     <div className="flex flex-col gap-16">
       {/* 소개 */}
       <section className="flex flex-col gap-4 pt-6">
-        <p className="text-sm font-medium text-accent">{profile.role}</p>
+        {profile.role && <p className="text-sm font-medium text-accent">{profile.role}</p>}
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
           안녕하세요, {profile.name}입니다.
         </h1>
-        <p className="max-w-2xl text-lg text-muted">{profile.intro}</p>
+        {profile.intro && <p className="max-w-2xl text-lg text-muted">{profile.intro}</p>}
         <div className="flex gap-3 pt-2 text-sm">
           <Link href="/projects" className="rounded-lg bg-accent px-4 py-2 font-medium text-white hover:bg-accent-strong">
             프로젝트 보기

@@ -10,7 +10,7 @@ export default async function AboutPage() {
     <div className="flex flex-col gap-12">
       <section>
         <h1 className="text-3xl font-bold">About</h1>
-        <p className="mt-1 text-muted">{profile.role}</p>
+        {profile.role && <p className="mt-1 text-muted">{profile.role}</p>}
         <div className="mt-6 flex flex-col gap-4 leading-relaxed">
           {profile.bio.split("\n\n").map((para, i) => (
             <p key={i}>{para}</p>
