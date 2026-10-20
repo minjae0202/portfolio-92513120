@@ -17,7 +17,8 @@ import { updateProfile, type Profile } from "@/lib/profile";
 import { isAdmin, requireAdmin } from "@/lib/authz";
 
 function text(formData: FormData, key: string, max = 5000): string {
-  return String(formData.get(key) ?? "").trim().slice(0, max);
+  // textarea는 줄바꿈을 CRLF로 보내므로 LF로 통일해서 저장
+  return String(formData.get(key) ?? "").replace(/\r\n?/g, "\n").trim().slice(0, max);
 }
 
 // javascript: 같은 스킴으로 링크 XSS가 생기지 않도록 http(s) URL만 허용

@@ -18,12 +18,12 @@ export default async function AdminPage() {
         <Link href="/admin/profile" className="rounded-lg border border-line px-4 py-2 text-sm hover:bg-subtle">
           프로필 수정
         </Link>
-        <Link href="/admin/projects/new" className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-strong">
+        <Link href="/admin/projects/new" className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-on-accent hover:bg-accent-strong">
           + 새 프로젝트
         </Link>
       </div>
 
-      <div className="overflow-x-auto rounded-2xl border border-line bg-card">
+      <div className="overflow-x-auto rounded-lg border border-line bg-card">
         <table className="w-full text-sm">
           <thead className="border-b border-line text-left text-muted">
             <tr>

@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
+/* 보안 콘솔 테마 — 남색 + 틸 포인트, 라벨은 모노스페이스 */
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
+  --background: #f6f8fa;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --subtle: #f2f1ef;
-  --line: #e4e2df;
-  --muted: #6b6560;
-  --accent: #4f46e5;
-  --accent-strong: #4338ca;
+  --subtle: #eef2f6;
+  --line: #dbe3ea;
+  --muted: #5b6b7c;
+  --accent: #0d9488;
+  --accent-strong: #0f766e;
+  --on-accent: #ffffff;
+  --grid: rgba(15, 23, 42, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f0f10;
-    --foreground: #ececec;
-    --card: #17171a;
-    --subtle: #222226;
-    --line: #2c2c31;
-    --muted: #9b9ba3;
-    --accent: #818cf8;
-    --accent-strong: #a5b4fc;
+    --background: #0a0f1a;
+    --foreground: #e6edf3;
+    --card: #0f1624;
+    --subtle: #162032;
+    --line: #1f2b3e;
+    --muted: #8b9bb0;
+    --accent: #2dd4bf;
+    --accent-strong: #5eead4;
+    --on-accent: #042f2e;
+    --grid: rgba(148, 163, 184, 0.07);
   }
 }
 
@@ -33,7 +38,9 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-on-accent: var(--on-accent);
   --font-sans: var(--font-noto-sans-kr), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace; /* 영문·숫자·URL 전용 (한글 글리프 없음) */
 }
 
 body {
@@ -42,9 +49,22 @@ body {
 }
 
 .field {
-  @apply w-full rounded-lg border border-line bg-card px-3 py-2 text-sm outline-none focus:border-accent;
+  @apply w-full rounded-md border border-line bg-card px-3 py-2 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20;
 }
 
 .label {
   @apply mb-1 block text-sm font-medium;
+}
+
+/* 히어로 배경의 옅은 격자 */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* 섹션 제목 앞 번호: "01" */
+.section-no {
+  @apply font-mono text-xs font-medium text-accent;
 }

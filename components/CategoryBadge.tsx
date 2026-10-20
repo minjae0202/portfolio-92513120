@@ -1,8 +1,8 @@
 import { PROJECT_CATEGORIES, type ProjectCategory } from "@/lib/projects";
 
 const styles: Record<ProjectCategory, string> = {
-  course: "bg-accent/10 text-accent",
-  whitehat: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+  course: "border-accent/40 text-accent",
+  whitehat: "border-violet-500/40 text-violet-600 dark:text-violet-300",
   personal: "",
 };
 
@@ -10,7 +10,7 @@ const styles: Record<ProjectCategory, string> = {
 export function CategoryBadge({ category }: { category: ProjectCategory }) {
   if (category === "personal") return null;
   return (
-    <span className={`rounded-full px-2 py-0.5 font-medium ${styles[category]}`}>
+    <span className={`rounded border px-1.5 py-0.5 text-[11px] font-medium ${styles[category]}`}>
       {PROJECT_CATEGORIES[category]}
     </span>
   );

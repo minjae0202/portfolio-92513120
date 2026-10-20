@@ -5,10 +5,11 @@ import { CategoryBadge } from "@/components/CategoryBadge";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="flex flex-col gap-4 rounded-2xl border border-line bg-card p-5 transition hover:border-accent/50">
+    <article className="group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-line bg-card p-5 transition hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-md">
+      <span className="absolute inset-y-0 left-0 w-0.5 bg-accent opacity-0 transition group-hover:opacity-100" />
       <div className="flex items-center gap-2 text-xs text-muted">
         <CategoryBadge category={project.category} />
-        {project.period && <span>{project.period}</span>}
+        {project.period && <span className="font-mono">{project.period}</span>}
         <span className="ml-auto">조회 {project.views}</span>
       </div>
       <div>
@@ -21,7 +22,7 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
       <ul className="flex flex-wrap gap-1.5">
         {project.techStack.map((t) => (
-          <li key={t} className="rounded-md bg-subtle px-2 py-0.5 text-xs">
+          <li key={t} className="text-xs text-muted before:text-accent before:content-['#']">
             {t}
           </li>
         ))}

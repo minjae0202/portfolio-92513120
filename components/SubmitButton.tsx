@@ -9,7 +9,7 @@ type Props = {
 };
 
 const styles = {
-  primary: "bg-accent text-white hover:bg-accent-strong",
+  primary: "bg-accent text-on-accent hover:bg-accent-strong",
   danger: "text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40",
   ghost: "border border-line hover:bg-subtle",
 };

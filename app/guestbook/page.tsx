@@ -20,7 +20,7 @@ export default async function GuestbookPage() {
       </div>
 
       {session?.user ? (
-        <form action={createEntryAction} className="flex flex-col gap-3 rounded-2xl border border-line bg-card p-5">
+        <form action={createEntryAction} className="flex flex-col gap-3 rounded-lg border border-line bg-card p-5">
           <label htmlFor="message" className="label">
             {session.user.name}님의 메시지
           </label>
@@ -30,7 +30,7 @@ export default async function GuestbookPage() {
           </div>
         </form>
       ) : (
-        <p className="rounded-2xl border border-dashed border-line p-5 text-sm text-muted">
+        <p className="rounded-lg border border-dashed border-line p-5 text-sm text-muted">
           <Link href="/login" className="text-accent hover:underline">로그인</Link>하거나{" "}
           <Link href="/register" className="text-accent hover:underline">회원가입</Link>하면 방명록을 남길 수 있습니다.
         </p>
@@ -41,7 +41,7 @@ export default async function GuestbookPage() {
         {entries.map((entry) => {
           const canDelete = admin || entry.userId === session?.user?.id;
           return (
-            <li key={entry.id} className="rounded-2xl border border-line bg-card p-4">
+            <li key={entry.id} className="rounded-lg border border-line bg-card p-4">
               <div className="flex items-center gap-2 text-sm">
                 <span className="font-medium">{entry.authorName}</span>
                 <span className="text-xs text-muted">{entry.createdAt}</span>

@@ -12,7 +12,7 @@ export function ProjectLinks({ repoUrl, deployUrl, size = "sm" }: Props) {
           href={repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-1.5 rounded-lg border border-line font-medium hover:bg-subtle ${pad}`}
+          className={`inline-flex items-center gap-1.5 rounded-md border border-line bg-card font-medium hover:border-accent hover:text-accent ${pad}`}
         >
           <GitHubIcon /> GitHub 저장소
         </a>
@@ -22,7 +22,7 @@ export function ProjectLinks({ repoUrl, deployUrl, size = "sm" }: Props) {
           href={deployUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-1.5 rounded-lg bg-accent font-medium text-white hover:bg-accent-strong ${pad}`}
+          className={`inline-flex items-center gap-1.5 rounded-md bg-accent font-medium text-on-accent hover:bg-accent-strong ${pad}`}
         >
           <ExternalIcon /> 배포 사이트
         </a>

@@ -27,7 +27,7 @@ export default async function ProjectDetailPage({ params }: PageProps<"/projects
       </header>
 
       {(project.repoUrl || project.deployUrl) && (
-        <dl className="grid gap-2 rounded-2xl border border-line bg-card p-5 text-sm sm:grid-cols-[auto_1fr] sm:gap-x-6">
+        <dl className="grid gap-2 rounded-lg border border-line bg-card p-5 text-sm sm:grid-cols-[auto_1fr] sm:gap-x-6">
           {project.repoUrl && (
             <>
               <dt className="text-muted">저장소 주소</dt>
@@ -45,7 +45,7 @@ export default async function ProjectDetailPage({ params }: PageProps<"/projects
 
       {project.description && (
         <section className="flex flex-col gap-4 leading-relaxed">
-          {project.description.split("\n\n").map((para, i) => (
+          {project.description.split(/\r?\n\s*\r?\n/).map((para, i) => (
             <p key={i}>{para}</p>
           ))}
         </section>

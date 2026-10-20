@@ -13,7 +13,7 @@ export default function RootError({
       <p className="text-sm text-muted">일시적인 서버/DB 연결 문제일 수 있습니다. 잠시 후 다시 시도해주세요.</p>
       <button
         onClick={() => reset()}
-        className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-strong"
+        className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-on-accent hover:bg-accent-strong"
       >
         다시 시도
       </button>
